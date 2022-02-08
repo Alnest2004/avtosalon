@@ -1,0 +1,30 @@
+{% extends 'menu/base.html' %}
+
+{% block cars %}
+<div class="cars">
+{% for car in list_cars %}
+<p class="photo">
+    <img src="{{ car.photo.url }}" width="350" height="350">
+</p>
+{% endfor %}
+</div>
+<div class="text">
+{% for car in list_cars %}
+    <div class="info">
+        <P>{{ car.text|truncatechars:250 }}</P>
+        <p><a class="ssilka" href="{{ car.get_absolute_url }}">Подробнее...</a></p>
+    </div>
+    <br>
+{% endfor %}
+</div>
+<form>
+<select name="cars">
+  {% for car in list_cars%}
+     <option value={{ car.model }}>{{ car.model }}</option>
+  {% endfor %}
+</select>
+</form>
+{% endblock cars %}
+
+
+

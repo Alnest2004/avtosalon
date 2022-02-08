@@ -1,0 +1,17 @@
+{% extends 'menu/base.html' %}
+
+{% block cars %}
+{% for p in Category %}
+    <div>
+        <p>Категория: {{p.cat}}</p>
+        <p>Дата: {{p.time_create|date:"d-m-Y H:i:s"}}
+        <div>
+            <img src="{{ p.photo.url }}" width="350" height="350">
+        </div>
+        <p>{{ p.text }}</p>
+
+
+
+    </div>
+{% endfor %}
+{% endblock cars %}

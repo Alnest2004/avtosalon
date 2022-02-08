@@ -1,0 +1,13 @@
+{% extends 'menu/base.html' %}
+
+{% block cars %}
+    <h1>{{post.model}}</h1>
+{% if post.photo %}
+<p><img src="{{ post.photo.url }}" width="400px" height="400px"></p>
+{% endif %}
+
+{{ post.text }}
+{% endblock cars %}
+
+
+

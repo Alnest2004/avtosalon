@@ -1,0 +1,33 @@
+{% extends 'menu/base.html' %}
+{% block cars %}
+<h1>{{ title }}</h1>
+<!--
+1)enctype - Когда значение атрибута method равно post, атрибут - MIME тип содержимого,
+ которое используется, чтобы передать форму на сервер.
+  2)multipart/form-data: Используйте это значение, если пользуетесь
+   элементом <input> атрибутом type установленным в "file".
+   3)action - URI-адрес программы, которая обрабатывает информацию переданную
+    через форму.
+    4)method HTTP метод, который браузер использует, для отправки формы.
+     Возможные значения: post: Соответствует HTTP POST методу ; данные из
+      формы включаются в тело формы и посылаются на сервер.
+  -->
+
+<form action="{% url 'add_page' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-error">{{ form.non_fields_errors }}</div>
+
+    {% for f in form %}
+    <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
+    <div class="form-error">{{ f.errors }}</div>
+    {% endfor %}
+
+
+
+      <button type="submit">Добавить</button>
+</form>
+<div>
+    Страничка для добавления записи
+</div>
+{% endblock cars %}
